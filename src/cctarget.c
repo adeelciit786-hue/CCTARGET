@@ -29,10 +29,10 @@ void display_target_info(void) {
         printf("Architecture: Unknown\n");
     #endif
     
-    #ifdef __GNUC__
-        printf("Compiler: GCC %d.%d.%d\n", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
-    #elif defined(__clang__)
+    #if defined(__clang__)
         printf("Compiler: Clang %d.%d.%d\n", __clang_major__, __clang_minor__, __clang_patchlevel__);
+    #elif defined(__GNUC__)
+        printf("Compiler: GCC %d.%d.%d\n", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
     #elif defined(_MSC_VER)
         printf("Compiler: MSVC %d\n", _MSC_VER);
     #else
